@@ -1,0 +1,92 @@
+# config.yaml
+sources:
+  source_1:
+    host: '10.5.13.6'
+    user: tccadmin
+    password: tccposP@ssw0rd
+    database: dms_2024-07-18
+    port: 3306
+    tables:
+        - sale_performance
+        - campaign_premiums
+        - suppliers
+        - users
+        - sale_orders
+        - customer_contracts_first
+        - campaigns 
+        - campaign_targets 
+        - campaign_transactions 
+        - customers 
+        - contracts 
+        - customer_groups 
+        - campaign_progresses 
+      # - categories
+      # - brands
+      # - pricing
+      # - sku_suppliers
+
+  source_2:
+    host: '10.5.13.6'
+    user: tccadmin
+    password: tccposP@ssw0rd
+    database: dms_2024_07_04
+    port: 3306
+    tables:
+        - sale_performance
+        - campaign_premiums
+        - suppliers
+        - users
+        - sale_orders
+        - customer_contracts_first
+        - campaigns 
+        - campaign_targets 
+        - campaign_transactions 
+        - customers 
+        - contracts 
+        - customer_groups 
+        - campaign_progresses 
+      # - categories
+      # - brands
+      # - pricing
+      # - sku_suppliers
+      
+  # source_2:
+  #   host: localhost
+  #   user: root
+  #   password: Koonpoych123
+  #   database: inventory_management
+  #   port: 3309
+  #   tables:
+  #     - categories
+  #     - brands
+  #     - skus
+
+  # source_3:
+  #   host: localhost
+  #   user: root
+  #   password: Koonpoych123
+  #   database: inventory_management
+  #   port: 3310
+  #   tables:
+  #     - categories
+  #     - brands
+  #     - contracts
+  #     - suppliers
+  #     - skus
+
+  # source_4:
+  #   host: localhost
+  #   user: root
+  #   password: Koonpoych123
+  #   database: inventory_management
+  #   port: 3311
+  #   tables:
+  #     - categories
+   
+
+target:
+  host: localhost
+  user: root
+  password: Koonpoych123
+  database: inventory_management
+  port: 3307

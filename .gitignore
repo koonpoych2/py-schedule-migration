@@ -1,0 +1,8 @@
+﻿.vscode
+run_migration.bat
+*.csv
+dockerfile
+migration.zip
+migration_scheduler.log
+migration.log
+myenv
