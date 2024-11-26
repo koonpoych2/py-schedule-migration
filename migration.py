@@ -13,6 +13,24 @@ import csv
 import yaml
 import urllib.parse
 
+def convert_datetime(value):
+
+    if pd.isna(value) or value is None:
+        return None
+    
+    if isinstance(value, str):
+        return value
+    
+    # Convert datetime objects to string
+    try:
+        if isinstance(value, datetime):
+            return value.strftime('%Y-%m-%d %H:%M:%S')
+    except Exception as e:
+        print(f"Datetime conversion error: {e}")
+        return None
+    
+    return value
+
 class CollisionLogger:
     def __init__(self):
         """Initialize collision logger with timestamp-based filename"""
@@ -135,6 +153,8 @@ class DatabaseMigrator:
             f"{config['host']}:{config['port']}/{config['database']}"
         )
         return connection_string
+    
+
 
     
     def migrate_table(self, table_name, collisions, source_name, batch_size=1000):
@@ -197,7 +217,10 @@ class DatabaseMigrator:
                         self.logger.warning(f"Extra columns in DataFrame for table {table_name}: {extra_cols}")
                         df = df.drop(columns=extra_cols)
          
-                    
+                    for col in df.columns:
+                        # Check if column is datetime-like
+                        if df[col].dtype == 'datetime64[ns]':
+                            df[col] = df[col].apply(convert_datetime)
 
                     # Define a robust NaN handling function
                     def convert_value(value, column_name):
